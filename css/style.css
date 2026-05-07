@@ -118,14 +118,20 @@ td{
     border-top:1px solid #222;
 }
 
-/* ESTADOS */
+/* SELECT ESTADO TABLA */
 
-.estado{
-    padding:8px 14px;
+td select{
+    width:140px;
+    padding:8px 10px;
     border-radius:20px;
+    border:none;
     font-size:12px;
     font-weight:bold;
+    cursor:pointer;
+    outline:none;
 }
+
+/* COLORES POR ESTADO */
 
 .estado-pendiente{
     background:#444;
