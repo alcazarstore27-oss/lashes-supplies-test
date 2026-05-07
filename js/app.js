@@ -2,6 +2,12 @@ const guardarBtn = document.getElementById("guardarBtn");
 const tablaBody = document.getElementById("tablaBody");
 const buscador = document.getElementById("buscador");
 
+// CARDS
+const totalCard = document.getElementById("totalCard");
+const transitoCard = document.getElementById("transitoCard");
+const miamiCard = document.getElementById("miamiCard");
+const entregadoCard = document.getElementById("entregadoCard");
+
 // CARGAR DATOS
 document.addEventListener("DOMContentLoaded", () => {
     cargarDatos();
@@ -139,6 +145,23 @@ function cargarDatos(){
     registros.forEach(registro => {
         agregarFila(registro);
     });
+
+    actualizarCards();
+
+}
+
+// ACTUALIZAR CARDS
+function actualizarCards(){
+
+    let registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+    totalCard.textContent = registros.length;
+
+    transitoCard.textContent = registros.filter(r => r.estado === "En tránsito").length;
+
+    miamiCard.textContent = registros.filter(r => r.estado === "En Miami").length;
+
+    entregadoCard.textContent = registros.filter(r => r.estado === "Entregado").length;
 
 }
 
