@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lashes Supplies Tracking</title>
+    <title>Control de Mercadería</title>
 
-    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 
 <body>
@@ -27,23 +27,43 @@
     <!-- TARJETAS -->
     <section class="cards">
 
-        <div class="card">
+        <div class="card total-card" onclick="filtrarPorEstado('TODOS')">
             <h3>Total</h3>
             <p id="totalCard">0</p>
         </div>
 
-        <div class="card">
+        <div class="card pendiente-card" onclick="filtrarPorEstado('Pendiente')">
+            <h3>Pendiente</h3>
+            <p id="pendienteCard">0</p>
+        </div>
+
+        <div class="card proveedor-card" onclick="filtrarPorEstado('Proveedor')">
+            <h3>Proveedor</h3>
+            <p id="proveedorCard">0</p>
+        </div>
+
+        <div class="card china-card" onclick="filtrarPorEstado('En China')">
+            <h3>En China</h3>
+            <p id="chinaCard">0</p>
+        </div>
+
+        <div class="card transito-card" onclick="filtrarPorEstado('En tránsito')">
             <h3>En tránsito</h3>
             <p id="transitoCard">0</p>
         </div>
 
-        <div class="card">
+        <div class="card miami-card" onclick="filtrarPorEstado('En Miami')">
             <h3>En Miami</h3>
             <p id="miamiCard">0</p>
         </div>
 
-        <div class="card">
-            <h3>Entregados</h3>
+        <div class="card aduana-card" onclick="filtrarPorEstado('En Aduana')">
+            <h3>En Aduana</h3>
+            <p id="aduanaCard">0</p>
+        </div>
+
+        <div class="card entregado-card" onclick="filtrarPorEstado('Entregado')">
+            <h3>Entregado</h3>
             <p id="entregadoCard">0</p>
         </div>
 
@@ -118,7 +138,7 @@
 
     </section>
 
-    <script src="js/app.js?v=4"></script>
+    <script src="js/app.js?v=5"></script>
 
 </body>
 </html>
