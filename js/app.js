@@ -31,19 +31,14 @@ guardarBtn.addEventListener("click", () => {
         observaciones
     };
 
-    // Obtener datos actuales
     let registros = JSON.parse(localStorage.getItem("registros")) || [];
 
-    // Agregar nuevo registro
     registros.push(registro);
 
-    // Guardar nuevamente
     localStorage.setItem("registros", JSON.stringify(registros));
 
-    // Agregar fila
     agregarFila(registro);
 
-    // Limpiar formulario
     limpiarFormulario();
 
 });
@@ -51,12 +46,50 @@ guardarBtn.addEventListener("click", () => {
 // FUNCION AGREGAR FILA
 function agregarFila(registro){
 
+    let claseEstado = "";
+
+    switch(registro.estado){
+
+        case "Pendiente":
+            claseEstado = "estado-pendiente";
+            break;
+
+        case "Proveedor":
+            claseEstado = "estado-proveedor";
+            break;
+
+        case "En China":
+            claseEstado = "estado-china";
+            break;
+
+        case "En tránsito":
+            claseEstado = "estado-transito";
+            break;
+
+        case "En Miami":
+            claseEstado = "estado-miami";
+            break;
+
+        case "En Aduana":
+            claseEstado = "estado-aduana";
+            break;
+
+        case "Entregado":
+            claseEstado = "estado-entregado";
+            break;
+
+    }
+
     const fila = document.createElement("tr");
 
     fila.innerHTML = `
         <td>${registro.rastreo}</td>
         <td>${registro.contenido}</td>
-        <td>${registro.estado}</td>
+        <td>
+            <span class="estado ${claseEstado}">
+                ${registro.estado}
+            </span>
+        </td>
         <td>${registro.fecha}</td>
         <td>${registro.proveedor}</td>
         <td>
