@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de Mercadería</title>
 
-    <link rel="stylesheet" href="css/style.css?v=5">
+    <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 
 <body>
@@ -98,7 +98,10 @@
 
         <textarea id="observaciones" placeholder="Observaciones"></textarea>
 
-        <button id="guardarBtn">Guardar</button>
+        <div class="buttons">
+            <button id="guardarBtn">Guardar</button>
+            <button onclick="exportarExcel()">Exportar Excel</button>
+        </div>
 
     </section>
 
@@ -117,28 +120,33 @@
 
         </div>
 
-        <table>
+        <div class="table-container">
 
-            <thead>
-                <tr>
-                    <th>Rastreo</th>
-                    <th>Contenido</th>
-                    <th>Estado</th>
-                    <th>Fecha</th>
-                    <th>Proveedor</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
+            <table>
 
-            <tbody id="tablaBody">
+                <thead>
+                    <tr>
+                        <th>Rastreo</th>
+                        <th>Contenido</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th>Proveedor</th>
+                        <th>Observaciones</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
 
-            </tbody>
+                <tbody id="tablaBody">
 
-        </table>
+                </tbody>
+
+            </table>
+
+        </div>
 
     </section>
 
-    <script src="js/app.js?v=5"></script>
+    <script src="js/app.js?v=6"></script>
 
 </body>
 </html>
