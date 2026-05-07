@@ -1,10 +1,14 @@
 const guardarBtn = document.getElementById("guardarBtn");
 const tablaBody = document.getElementById("tablaBody");
+const buscador = document.getElementById("buscador");
 
 // CARGAR DATOS
 document.addEventListener("DOMContentLoaded", () => {
     cargarDatos();
 });
+
+// BUSCADOR
+buscador.addEventListener("keyup", buscarRegistros);
 
 // GUARDAR REGISTRO
 guardarBtn.addEventListener("click", () => {
@@ -169,6 +173,31 @@ function eliminarRegistro(id){
     localStorage.setItem("registros", JSON.stringify(registros));
 
     cargarDatos();
+
+}
+
+// BUSCAR
+function buscarRegistros(){
+
+    const texto = buscador.value.toLowerCase();
+
+    let registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+    let filtrados = registros.filter(registro => {
+
+        return (
+            registro.rastreo.toLowerCase().includes(texto) ||
+            registro.contenido.toLowerCase().includes(texto) ||
+            registro.proveedor.toLowerCase().includes(texto)
+        );
+
+    });
+
+    tablaBody.innerHTML = "";
+
+    filtrados.forEach(registro => {
+        agregarFila(registro);
+    });
 
 }
 
