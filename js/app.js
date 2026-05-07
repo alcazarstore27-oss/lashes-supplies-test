@@ -128,8 +128,20 @@ function agregarFila(registro){
 
         <td>${registro.proveedor}</td>
 
+        <td>${registro.observaciones}</td>
+
         <td>
-            <button onclick="eliminarRegistro(${registro.id})">
+            <button 
+                class="btn-editar"
+                onclick="editarRegistro(${registro.id})"
+            >
+                Editar
+            </button>
+
+            <button 
+                class="btn-eliminar"
+                onclick="eliminarRegistro(${registro.id})"
+            >
                 Eliminar
             </button>
         </td>
@@ -198,6 +210,45 @@ function cambiarEstado(id, nuevoEstado){
 
 }
 
+// EDITAR
+function editarRegistro(id){
+
+    let registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+    let registro = registros.find(r => r.id === id);
+
+    const nuevoContenido = prompt("Editar contenido:", registro.contenido);
+
+    if(nuevoContenido === null) return;
+
+    const nuevoProveedor = prompt("Editar proveedor:", registro.proveedor);
+
+    if(nuevoProveedor === null) return;
+
+    const nuevasObservaciones = prompt("Editar observaciones:", registro.observaciones);
+
+    if(nuevasObservaciones === null) return;
+
+    registros = registros.map(r => {
+
+        if(r.id === id){
+
+            r.contenido = nuevoContenido;
+            r.proveedor = nuevoProveedor;
+            r.observaciones = nuevasObservaciones;
+
+        }
+
+        return r;
+
+    });
+
+    localStorage.setItem("registros", JSON.stringify(registros));
+
+    cargarDatos();
+
+}
+
 // ELIMINAR
 function eliminarRegistro(id){
 
@@ -257,6 +308,31 @@ function filtrarPorEstado(estado){
     filtrados.forEach(registro => {
         agregarFila(registro);
     });
+
+}
+
+// EXPORTAR CSV
+function exportarExcel(){
+
+    let registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+    let csv = "Rastreo,Contenido,Estado,Fecha,Proveedor,Observaciones\n";
+
+    registros.forEach(r => {
+
+        csv += `${r.rastreo},${r.contenido},${r.estado},${r.fecha},${r.proveedor},${r.observaciones}\n`;
+
+    });
+
+    const blob = new Blob([csv], { type: "text/csv" });
+
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+
+    link.download = "mercaderia.csv";
+
+    link.click();
 
 }
 
