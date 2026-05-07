@@ -44,21 +44,68 @@ body{
 }
 
 .card{
-    background:#111111;
-    border:1px solid #b06ab3;
     border-radius:20px;
     padding:25px;
+    cursor:pointer;
+    transition:0.3s;
+    border:1px solid transparent;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:white;
 }
 
 .card h3{
-    color:#cccccc;
     margin-bottom:10px;
+    font-size:16px;
 }
 
 .card p{
-    font-size:38px;
-    color:#b06ab3;
+    font-size:34px;
     font-weight:bold;
+}
+
+/* COLORES CARDS */
+
+.total-card{
+    background:#1b1023;
+    color:#d58cff;
+}
+
+.pendiente-card{
+    background:#2a2a2a;
+    color:#ffffff;
+}
+
+.proveedor-card{
+    background:#11263f;
+    color:#7dc3ff;
+}
+
+.china-card{
+    background:#003366;
+    color:#4da6ff;
+}
+
+.transito-card{
+    background:#5c4700;
+    color:#ffd54f;
+}
+
+.miami-card{
+    background:#4a0072;
+    color:#e082ff;
+}
+
+.aduana-card{
+    background:#663300;
+    color:#ffb74d;
+}
+
+.entregado-card{
+    background:#004d1a;
+    color:#66ff99;
 }
 
 /* FORMULARIO */
@@ -156,7 +203,7 @@ td{
     border-top:1px solid #222;
 }
 
-/* SELECT ESTADO TABLA */
+/* SELECT ESTADO */
 
 td select{
     width:140px;
@@ -169,7 +216,7 @@ td select{
     outline:none;
 }
 
-/* COLORES POR ESTADO */
+/* ESTADOS */
 
 .estado-pendiente{
     background:#444;
