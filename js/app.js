@@ -1,14 +1,13 @@
 const guardarBtn = document.getElementById("guardarBtn");
 const tablaBody = document.getElementById("tablaBody");
 
-// Cargar datos al iniciar
-document.addEventListener("DOMContentLoaded", cargarDatos);
+// Cargar datos guardados
+document.addEventListener("DOMContentLoaded", () => {
+    cargarDatos();
+});
 
 // Evento guardar
-guardarBtn.addEventListener("click", guardarRegistro);
-
-// FUNCION GUARDAR
-function guardarRegistro(){
+guardarBtn.addEventListener("click", () => {
 
     const rastreo = document.getElementById("rastreo").value;
     const contenido = document.getElementById("contenido").value;
@@ -22,7 +21,7 @@ function guardarRegistro(){
         return;
     }
 
-    const nuevoRegistro = {
+    const registro = {
         id: Date.now(),
         rastreo,
         contenido,
@@ -32,21 +31,22 @@ function guardarRegistro(){
         observaciones
     };
 
-    // Obtener registros actuales
+    // Obtener datos actuales
     let registros = JSON.parse(localStorage.getItem("registros")) || [];
 
-    // Agregar nuevo
-    registros.push(nuevoRegistro);
+    // Agregar nuevo registro
+    registros.push(registro);
 
-    // Guardar
+    // Guardar nuevamente
     localStorage.setItem("registros", JSON.stringify(registros));
 
-    // Mostrar en tabla
-    agregarFila(nuevoRegistro);
+    // Agregar fila
+    agregarFila(registro);
 
     // Limpiar formulario
     limpiarFormulario();
-}
+
+});
 
 // FUNCION AGREGAR FILA
 function agregarFila(registro){
@@ -67,12 +67,15 @@ function agregarFila(registro){
     `;
 
     tablaBody.appendChild(fila);
+
 }
 
 // FUNCION CARGAR DATOS
 function cargarDatos(){
 
     let registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+    tablaBody.innerHTML = "";
 
     registros.forEach(registro => {
         agregarFila(registro);
@@ -89,12 +92,11 @@ function eliminarRegistro(id){
 
     localStorage.setItem("registros", JSON.stringify(registros));
 
-    tablaBody.innerHTML = "";
-
     cargarDatos();
+
 }
 
-// FUNCION LIMPIAR
+// FUNCION LIMPIAR FORMULARIO
 function limpiarFormulario(){
 
     document.getElementById("rastreo").value = "";
