@@ -77,11 +77,16 @@ button{
     background:#b06ab3;
     color:white;
     border:none;
-    padding:15px 30px;
+    padding:12px 20px;
     border-radius:12px;
     cursor:pointer;
-    font-size:16px;
+    font-size:14px;
     font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    opacity:0.8;
 }
 
 /* DASHBOARD */
@@ -111,4 +116,48 @@ th{
 td{
     padding:15px 0;
     border-top:1px solid #222;
+}
+
+/* ESTADOS */
+
+.estado{
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.estado-pendiente{
+    background:#444;
+    color:white;
+}
+
+.estado-proveedor{
+    background:#1e3a5f;
+    color:#7dc3ff;
+}
+
+.estado-china{
+    background:#003366;
+    color:#4da6ff;
+}
+
+.estado-transito{
+    background:#5c4700;
+    color:#ffd54f;
+}
+
+.estado-miami{
+    background:#4a0072;
+    color:#e082ff;
+}
+
+.estado-aduana{
+    background:#663300;
+    color:#ffb74d;
+}
+
+.estado-entregado{
+    background:#004d1a;
+    color:#66ff99;
 }
