@@ -31,11 +31,11 @@
 
         <div class="form-grid">
 
-            <input type="text" placeholder="Número de rastreo">
+            <input type="text" id="rastreo" placeholder="Número de rastreo">
 
-            <input type="text" placeholder="Contenido">
+            <input type="text" id="contenido" placeholder="Contenido">
 
-            <select>
+            <select id="estado">
                 <option>Pendiente</option>
                 <option>Proveedor</option>
                 <option>En China</option>
@@ -45,15 +45,15 @@
                 <option>Entregado</option>
             </select>
 
-            <input type="date">
+            <input type="date" id="fecha">
 
-            <input type="text" placeholder="Proveedor">
+            <input type="text" id="proveedor" placeholder="Proveedor">
 
         </div>
 
-        <textarea placeholder="Observaciones"></textarea>
+        <textarea id="observaciones" placeholder="Observaciones"></textarea>
 
-        <button>Guardar</button>
+        <button id="guardarBtn">Guardar</button>
 
     </section>
 
@@ -74,15 +74,7 @@
                 </tr>
             </thead>
 
-            <tbody>
-
-                <tr>
-                    <td>LP123456789CN</td>
-                    <td>Pestañas 20mm</td>
-                    <td>En tránsito</td>
-                    <td>06/05/2026</td>
-                    <td>Alibaba</td>
-                </tr>
+            <tbody id="tablaBody">
 
             </tbody>
 
