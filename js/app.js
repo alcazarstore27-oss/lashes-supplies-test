@@ -4,11 +4,15 @@ const buscador = document.getElementById("buscador");
 
 // CARDS
 const totalCard = document.getElementById("totalCard");
+const pendienteCard = document.getElementById("pendienteCard");
+const proveedorCard = document.getElementById("proveedorCard");
+const chinaCard = document.getElementById("chinaCard");
 const transitoCard = document.getElementById("transitoCard");
 const miamiCard = document.getElementById("miamiCard");
+const aduanaCard = document.getElementById("aduanaCard");
 const entregadoCard = document.getElementById("entregadoCard");
 
-// CARGAR DATOS
+// CARGAR
 document.addEventListener("DOMContentLoaded", () => {
     cargarDatos();
 });
@@ -16,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // BUSCADOR
 buscador.addEventListener("keyup", buscarRegistros);
 
-// GUARDAR REGISTRO
+// GUARDAR
 guardarBtn.addEventListener("click", () => {
 
     const rastreo = document.getElementById("rastreo").value;
@@ -53,7 +57,7 @@ guardarBtn.addEventListener("click", () => {
 
 });
 
-// CLASE COLOR ESTADO
+// COLOR ESTADO
 function obtenerClaseEstado(estado){
 
     switch(estado){
@@ -157,9 +161,17 @@ function actualizarCards(){
 
     totalCard.textContent = registros.length;
 
+    pendienteCard.textContent = registros.filter(r => r.estado === "Pendiente").length;
+
+    proveedorCard.textContent = registros.filter(r => r.estado === "Proveedor").length;
+
+    chinaCard.textContent = registros.filter(r => r.estado === "En China").length;
+
     transitoCard.textContent = registros.filter(r => r.estado === "En tránsito").length;
 
     miamiCard.textContent = registros.filter(r => r.estado === "En Miami").length;
+
+    aduanaCard.textContent = registros.filter(r => r.estado === "En Aduana").length;
 
     entregadoCard.textContent = registros.filter(r => r.estado === "Entregado").length;
 
@@ -224,7 +236,31 @@ function buscarRegistros(){
 
 }
 
-// LIMPIAR FORMULARIO
+// FILTRAR POR ESTADO
+function filtrarPorEstado(estado){
+
+    let registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+    tablaBody.innerHTML = "";
+
+    if(estado === "TODOS"){
+
+        registros.forEach(registro => {
+            agregarFila(registro);
+        });
+
+        return;
+    }
+
+    let filtrados = registros.filter(registro => registro.estado === estado);
+
+    filtrados.forEach(registro => {
+        agregarFila(registro);
+    });
+
+}
+
+// LIMPIAR
 function limpiarFormulario(){
 
     document.getElementById("rastreo").value = "";
