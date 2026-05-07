@@ -252,3 +252,26 @@ td select{
     background:#004d1a;
     color:#66ff99;
 }
+/* BOTONES */
+
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+/* TABLA */
+
+.table-container{
+    overflow-x:auto;
+}
+
+/* BOTON EDITAR */
+
+.btn-editar{
+    background:#2196f3;
+    margin-right:10px;
+}
+
+.btn-eliminar{
+    background:#b06ab3;
+}
