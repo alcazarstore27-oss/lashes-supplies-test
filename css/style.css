@@ -97,9 +97,20 @@ button:hover{
     padding:25px;
 }
 
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    gap:20px;
+}
+
 .dashboard h2{
     color:#b06ab3;
-    margin-bottom:25px;
+}
+
+#buscador{
+    max-width:350px;
 }
 
 table{
