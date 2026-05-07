@@ -43,8 +43,42 @@ guardarBtn.addEventListener("click", () => {
 
 });
 
+// CLASE COLOR ESTADO
+function obtenerClaseEstado(estado){
+
+    switch(estado){
+
+        case "Pendiente":
+            return "estado-pendiente";
+
+        case "Proveedor":
+            return "estado-proveedor";
+
+        case "En China":
+            return "estado-china";
+
+        case "En tránsito":
+            return "estado-transito";
+
+        case "En Miami":
+            return "estado-miami";
+
+        case "En Aduana":
+            return "estado-aduana";
+
+        case "Entregado":
+            return "estado-entregado";
+
+        default:
+            return "";
+    }
+
+}
+
 // AGREGAR FILA
 function agregarFila(registro){
+
+    const claseEstado = obtenerClaseEstado(registro.estado);
 
     const fila = document.createElement("tr");
 
@@ -54,7 +88,11 @@ function agregarFila(registro){
         <td>${registro.contenido}</td>
 
         <td>
-            <select onchange="cambiarEstado(${registro.id}, this.value)">
+            <select 
+                class="${claseEstado}"
+                onchange="cambiarEstado(${registro.id}, this.value)"
+            >
+
                 <option value="Pendiente" ${registro.estado === "Pendiente" ? "selected" : ""}>Pendiente</option>
 
                 <option value="Proveedor" ${registro.estado === "Proveedor" ? "selected" : ""}>Proveedor</option>
@@ -68,6 +106,7 @@ function agregarFila(registro){
                 <option value="En Aduana" ${registro.estado === "En Aduana" ? "selected" : ""}>En Aduana</option>
 
                 <option value="Entregado" ${registro.estado === "Entregado" ? "selected" : ""}>Entregado</option>
+
             </select>
         </td>
 
@@ -115,6 +154,8 @@ function cambiarEstado(id, nuevoEstado){
     });
 
     localStorage.setItem("registros", JSON.stringify(registros));
+
+    cargarDatos();
 
 }
 
